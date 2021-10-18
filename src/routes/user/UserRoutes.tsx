@@ -3,8 +3,9 @@ import React from 'react'
 import { Route, Redirect, useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { UserLayout } from '../../views/layouts/user/UserLayout'
-import { Dashboard } from '../../views/pages/admin/dashboard/Dashboard'
 import { LoadingPage } from '../../views/pages/loading/Loading'
+import { Dashboard } from '../../views/pages/user/dashboard/Dashboard'
+import { Profile } from '../../views/pages/user/profile/Profile'
 
 interface Props {
     
@@ -13,6 +14,7 @@ interface Props {
 export const UserRoute = [
     { path: "/user", exact: true, name: "User" },
     { path: "/user/dashboard", exact: true, name: "User Dashboard", component: Dashboard },
+    { path: "/user/profile", exact: true, name: "User Profile", component: Profile },
 ]
 
 export const UserPrivateRoute = ({ ...res }) => {
@@ -54,9 +56,9 @@ export const UserPrivateRoute = ({ ...res }) => {
         return Promise.reject(err)
     })
 
-    axios.interceptors.response.use(function response() {
-            return response;    
-        }, function (error) {
+    axios.interceptors.response.use(function (response) {
+        return response;    
+    }, function (error) {
             if ( error.response.status === 403 ) {
                 Swal.fire({
                     icon: 'warning',
@@ -99,9 +101,9 @@ export const UserPrivateRoute = ({ ...res }) => {
         <Route 
             { ...res }
 
-            render={ ({ history, location }) => 
+            render={ ({ match, location }) => 
                 authState ?
-                    ( <UserLayout { ...history }/> )
+                    ( <UserLayout { ...match }/> )
                 :
                     ( <Redirect to={ {pathname: "/login", state: {from: location}} }/> )
             }

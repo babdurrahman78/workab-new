@@ -2,10 +2,9 @@ import React from 'react'
 import Vector1 from '../../../../img/vector1.png'
 import { ButtonLink } from '../../../../components/button/Button'
 import { HomeButton, HomeContainer, HomeContentLeft, HomeContentRight, HomeImg, HomeSubtitle, HomeTitle } from './Home.elements'
-import { Props } from './Interface'
 import { FaArrowRight } from 'react-icons/fa'
 
-export const Home = (props: Props) => {
+export const Home = () => {
     return (
         <>
             <HomeContainer>

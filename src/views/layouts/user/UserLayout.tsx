@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
+import { Footer } from '../../../components/footer/Footer'
 import { Sidebar } from '../../../components/sidebar/Sidebar'
 import { Topbar } from '../../../components/topbar/Topbar'
 import { UserRoute } from '../../../routes/user/UserRoutes'
@@ -9,11 +10,11 @@ import { ULayout, ULayoutContainer, ULayoutContent, ULayoutMainContent } from '.
 export const UserLayout = (props: Props) => {
     return (
         <>
-            <ULayout id="Layout">
+            <ULayout>
                 <ULayoutContainer>
                     <Sidebar type="user" />   
 
-                    <ULayoutContent>
+                    <ULayoutContent id="Layout">
                         <Topbar />
 
                         <ULayoutMainContent>
@@ -38,8 +39,12 @@ export const UserLayout = (props: Props) => {
                                 }
                                 <Redirect from="/user" to="/user/dashboard" />
                             </Switch>
-
+                            
                         </ULayoutMainContent>
+
+                        <Footer
+                            type="white"
+                        />
                     </ULayoutContent>
                 </ULayoutContainer>
             </ULayout>

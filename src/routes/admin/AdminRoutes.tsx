@@ -54,41 +54,40 @@ export const AdminPrivateRoute = ({ ...res }) => {
         return Promise.reject(err)
     })
 
-    axios.interceptors.response.use(function response() {
-            return response;    
-        }, function (error) {
-            if ( error.response.status === 403 ) {
-                Swal.fire({
-                    icon: 'warning',
-                    title: "Forbedden",
-                    text: error.response.data.message,
-                    showClass: {
+    axios.interceptors.response.use(function (response) {
+        return response;    
+    }, function (error) {
+        if ( error.response.status === 403 ) {
+            Swal.fire({
+                icon: 'warning',
+                title: "Forbedden",
+                text: error.response.data.message,
+                showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+
+            history.push("/403")
+        } else if (error.response.status === 404 ) {
+            Swal.fire({
+                icon: 'warning',
+                title: "404 Error",
+                showClass: {
                     popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
+                },
+                hideClass: {
                     popup: 'animate__animated animate__fadeOutUp'
-                    }
-                })
+                }
+            })
 
-                history.push("/403")
-            } else if (error.response.status === 404 ) {
-                Swal.fire({
-                    icon: 'warning',
-                    title: "404 Error",
-                    showClass: {
-                      popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                      popup: 'animate__animated animate__fadeOutUp'
-                    }
-                })
-    
-                history.push("/404")
-            }
-
-            return Promise.reject(error)
+            history.push("/404")
         }
-    )
+
+        return Promise.reject(error)
+    })
 
     if (loadingState) {
         return (

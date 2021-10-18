@@ -1,6 +1,5 @@
 import React from 'react'
 import Cover from '../../../../img/login_cover.png'
-import { Props } from './Interface'
 import { InputField } from '../../../../components/input/InputField'
 import { LoginBack, LoginButton, LoginContainer, LoginContentLeft, LoginContentRight, LoginForm, LoginImg, LoginTitle } from './Login.elements'
 import { ButtonLoading, ButtonPrimary, ButtonWhite } from '../../../../components/button/Button'
@@ -9,7 +8,7 @@ import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
-export const Login = (props: Props) => {
+export const Login = () => {
     const [loadingState, setLoading] = React.useState(false)
     const [loginForm, setForm] = React.useState({
         username: '',
