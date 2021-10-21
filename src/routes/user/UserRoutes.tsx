@@ -7,10 +7,6 @@ import { LoadingPage } from '../../views/pages/loading/Loading'
 import { Dashboard } from '../../views/pages/user/dashboard/Dashboard'
 import { Profile } from '../../views/pages/user/profile/Profile'
 
-interface Props {
-    
-}
-
 export const UserRoute = [
     { path: "/user", exact: true, name: "User" },
     { path: "/user/dashboard", exact: true, name: "User Dashboard", component: Dashboard },

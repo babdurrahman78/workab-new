@@ -2,13 +2,12 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import Workab from '../../img/logo.png'
 import { FaAngleDown, FaBars, FaSignOutAlt, FaUser } from 'react-icons/fa'
-import { PropsTopBar, PropsTopBarLanding } from './Interface'
 import { NavTop, NavTopItemDropdown, NavTopItemDropdownMenu, NavTopItemDropdownMenuList, NavTopItemDropdownMenuListIcon, NavTopItemImg, NavTopItemName, NavTopItems, NavTopLanding, NavTopLandingButton, NavTopLandingContainer, NavTopLandingItem, NavTopLandingLink, NavTopLandingList, NavTopLandingLogo, NavTopLandingLogoImg, NavTopToggle } from './Topbar.elements'
 import { ButtonLink, ButtonWhite } from '../button/Button'
 import Swal from 'sweetalert2'
 import axios from 'axios'
 
-export const Topbar = (props: PropsTopBar) => {
+export const Topbar = () => {
     const [profileState, setProfile] = React.useState({
         name: 'Anonymous',
         avatar: 'https://ui-avatars.com/api/?name=&color=7F9CF5&background=EBF4FF'
@@ -37,7 +36,7 @@ export const Topbar = (props: PropsTopBar) => {
         return () => {
             
         }
-    }, [])
+    }, [profileState])
 
     const history = useHistory()
 
@@ -137,7 +136,7 @@ export const Topbar = (props: PropsTopBar) => {
     )
 }
 
-export const TopbarLanding = (props: PropsTopBarLanding) => {
+export const TopbarLanding = () => {
     const history = useHistory()
 
     let url: any, button: any = ''

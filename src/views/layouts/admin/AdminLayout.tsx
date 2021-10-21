@@ -4,7 +4,8 @@ import { Sidebar } from '../../../components/sidebar/Sidebar'
 import { Topbar } from '../../../components/topbar/Topbar'
 import { AdminRoute } from '../../../routes/admin/AdminRoutes'
 import { ALayout, ALayoutContainer, ALayoutContent, ALayoutMainContent } from './AdminLayout.elements'
-import { Props } from './Interface'
+
+type Props = Object
 
 export const AdminLayout = (props: Props) => {
     return (
