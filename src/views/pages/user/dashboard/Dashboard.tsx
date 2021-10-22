@@ -50,13 +50,15 @@ export const Dashboard = (props: Props) => {
 
             {
                 loadingState ?
-                    <ChartArea
-                        title="Laporan bulanan tahun 2021"
-                        data={ dashboardState.chart }
-                        dataX="month"
-                        dataLine1="visiting"
-                        dataLine2="attendance"
-                    />
+                    <>
+                        <ChartArea
+                            title="Laporan bulanan tahun 2021"
+                            data={ dashboardState.chart }
+                            dataX="month"
+                            dataLine1="visiting"
+                            dataLine2="attendance"
+                        />
+                    </>
                 :
                     <CardLoading />
             }

@@ -37,3 +37,25 @@ export const ChartArea = (props: Props) => {
         </>
     )
 }
+
+export const ChartLine = (props: Props) => {
+    return (
+        <>
+            <ChartContainer>
+                <ResponsiveContainer width="100%" aspect={ 4 / 1 }>
+                    <LineChart
+                        data={ props.data }
+                    >
+                        <XAxis dataKey={ props.dataX } stroke="#577BA8"/>
+                        { props.dataY && <YAxis/> }
+                        <Line type="monotone" dataKey={ props.dataLine1 } stroke="#577BA8"/>
+                        { props.dataLine2 && <Line type="monotone" dataKey={ props.dataLine2 } stroke="#577BA8"/> }
+                        <Tooltip />
+                        { props.grid && <CartesianGrid stroke="#E0DFDF" strokeDasharray="5 5"/> }
+                        <Legend/>
+                    </LineChart>
+                </ResponsiveContainer>
+            </ChartContainer>
+        </>
+    )
+}
