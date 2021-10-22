@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
         --body-color: #F9F9F9;
         --container-color: #FFF;
         --rgba-color-0-5: rgba(0, 0, 0, 0.5);
+        --profile-title-color: #FFFFFF;
 
         /* Font and Typography */
         --body-font: 'Poppins', sans-serif;

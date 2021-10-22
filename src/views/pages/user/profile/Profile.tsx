@@ -1,24 +1,25 @@
 import React from 'react'
-import { Card, CardHeader } from '../../../../components/card/Card'
-import { InputField } from '../../../../components/input/InputField'
-import { Props } from './Interface'
+import { ProfileContainer, ProfileCard, ProfileTitle, ProfileInfoContainer, ProfileImage, ProfileInfo } from './Profile.elements'
+import { ProfileState } from './Interface'
+import { useLocation } from 'react-router'
 
-export const Profile = (props: Props) => {
+export const Profile = () => {
+    const profile = useLocation<ProfileState>().state
+
     return (
-        <>
-            <Card>
-                <CardHeader title="Profile">
-                    {/* button */}
-                </CardHeader>
-
-                <InputField
-                    title="Username"
-                    name="username"
-                    type="text"
-                    errorMessage=""
-                    onChanged=""
-                />
-            </Card>  
-        </>
+        <ProfileContainer>
+            <ProfileCard>
+                <ProfileTitle>
+                    Biodata
+                </ProfileTitle>
+                <ProfileInfoContainer>
+                    <ProfileImage src={profile.avatar} />
+                    <ProfileInfo>
+                        <p>{profile?.name}</p>
+                        <p>tek</p>
+                    </ProfileInfo>
+                </ProfileInfoContainer>
+            </ProfileCard>
+        </ProfileContainer>
     )
 }

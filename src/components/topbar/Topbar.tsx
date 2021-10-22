@@ -1,5 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
+import { ProfileState } from './interface'
 import Workab from '../../img/logo.png'
 import { FaAngleDown, FaBars, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { NavTop, NavTopItemDropdown, NavTopItemDropdownMenu, NavTopItemDropdownMenuList, NavTopItemDropdownMenuListIcon, NavTopItemImg, NavTopItemName, NavTopItems, NavTopLanding, NavTopLandingButton, NavTopLandingContainer, NavTopLandingItem, NavTopLandingLink, NavTopLandingList, NavTopLandingLogo, NavTopLandingLogoImg, NavTopToggle } from './Topbar.elements'
@@ -8,7 +9,7 @@ import Swal from 'sweetalert2'
 import axios from 'axios'
 
 export const Topbar = () => {
-    const [profileState, setProfile] = React.useState({
+    const [profileState, setProfile] = React.useState<ProfileState>({
         name: 'Anonymous',
         avatar: 'https://ui-avatars.com/api/?name=&color=7F9CF5&background=EBF4FF'
     })
@@ -56,7 +57,10 @@ export const Topbar = () => {
         if ( localStorage.getItem("role") === "Admin" ) {
             history.push('/admin/profile')
         } else {
-            history.push('/user/profile')
+            history.push({
+                pathname: '/user/profile',
+                state: profileState,
+            })
         }
     }
     
@@ -139,13 +143,10 @@ export const Topbar = () => {
 export const TopbarLanding = () => {
     const history = useHistory()
 
-    let url: any, button: any = ''
+    let url: string | null, 
+    button: JSX.Element
 
-    if ( localStorage.getItem('role') === 'Admin' ) {
-        url = '/admin'
-    } else {
-        url = '/user'
-    }
+    url = localStorage.getItem('role') === 'Admin' ? '/admin' : '/user' 
 
     const logoutSession = () => {
         Swal.fire({
@@ -224,13 +225,13 @@ export const TopbarLanding = () => {
 
                     <NavTopLandingList>
                         <NavTopLandingItem>
-                            <NavTopLandingLink to="home_section" spy={true} smooth={true} duration={500}>
+                            <NavTopLandingLink to="home_section" spy smooth duration={500}>
                                 Home
                             </NavTopLandingLink>
-                            <NavTopLandingLink to="home_section" spy={true} smooth={true} duration={500}>
+                            <NavTopLandingLink to="home_section" spy smooth duration={500}>
                                 About
                             </NavTopLandingLink>
-                            <NavTopLandingLink to="home_section" spy={true} smooth={true} duration={500}>
+                            <NavTopLandingLink to="home_section" spy smooth duration={500}>
                                 Feauture
                             </NavTopLandingLink>
                         </NavTopLandingItem>
