@@ -6,10 +6,6 @@ import { AdminLayout } from '../../views/layouts/admin/AdminLayout'
 import { Dashboard } from '../../views/pages/admin/dashboard/Dashboard'
 import { LoadingPage } from '../../views/pages/loading/Loading'
 
-interface Props {
-    
-}
-
 export const AdminRoute = [
     { path: "/admin", exact: true, name: "Admin" },
     { path: "/admin/dashboard", exact: true, name: "Admin Dashboard", component: Dashboard },
