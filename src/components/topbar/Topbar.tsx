@@ -11,7 +11,8 @@ import axios from 'axios'
 export const Topbar = () => {
     const [profileState, setProfile] = React.useState<ProfileState>({
         name: 'Anonymous',
-        avatar: 'https://ui-avatars.com/api/?name=&color=7F9CF5&background=EBF4FF'
+        avatar: 'https://ui-avatars.com/api/?name=&color=7F9CF5&background=EBF4FF',
+        email: 'anon@gmail.com'
     })
 
     React.useEffect(() => {
@@ -22,6 +23,9 @@ export const Topbar = () => {
                     ...profileState,
                     name: res.data.data.admin.name,
                     avatar: res.data.data.admin.photo,
+                    email: res.data.data.admin.email,
+                    gender: res.data.data.admin.gender,
+                    nik: res.data.data.admin.nik,
                 })
             })
         } else {
@@ -30,6 +34,9 @@ export const Topbar = () => {
                     ...profileState,
                     name: res.data.data.user.name,
                     avatar: res.data.data.user.photo,
+                    email: res.data.data.user.email,
+                    gender: res.data.data.user.gender,
+                    nik: res.data.data.user.nik,
                 })
             })
         }
@@ -40,7 +47,7 @@ export const Topbar = () => {
     }, [profileState])
 
     const history = useHistory()
-
+    
     const toggleClick = () => {
         document.getElementById('Sidebar')?.classList.toggle('active')
         document.getElementById('Layout')?.classList.toggle('active')
