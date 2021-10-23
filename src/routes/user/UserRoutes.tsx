@@ -6,11 +6,13 @@ import { UserLayout } from '../../views/layouts/user/UserLayout'
 import { LoadingPage } from '../../views/pages/loading/Loading'
 import { Dashboard } from '../../views/pages/user/dashboard/Dashboard'
 import { Profile } from '../../views/pages/user/profile/Profile'
+import { Attendance } from '../../views/pages/user/attendance/Attendance'
 
 export const UserRoute = [
     { path: "/user", exact: true, name: "User" },
     { path: "/user/dashboard", exact: true, name: "User Dashboard", component: Dashboard },
     { path: "/user/profile", exact: true, name: "User Profile", component: Profile },
+    { path: "/user/attendance", exact: true, name: "User Attendance", component: Attendance },
 ]
 
 export const UserPrivateRoute = ({ ...res }) => {

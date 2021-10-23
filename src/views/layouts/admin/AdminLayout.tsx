@@ -28,7 +28,6 @@ export const AdminLayout = (props: Props) => {
                                                     key={ idx }
                                                     path={ route.path }
                                                     exact={ route.exact }
-                                                    name={ route.name }
                                                     render={ (props) =>
                                                         <route.component { ...props } />
                                                     }
