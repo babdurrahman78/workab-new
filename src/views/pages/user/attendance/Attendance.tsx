@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { StyledTable, StyledLoading } from './Attendance.element'
-import { AttendanceProps } from './AttendanceProps'
+import { AttendanceProps } from './Interface'
 
 export const Attendance = () => {
   const [loading, setLoading] = useState(true)
